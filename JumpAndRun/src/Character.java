@@ -3,6 +3,9 @@ import java.awt.*;
 
 public class Character extends JPanel {     //zeichnet den Character
 
+    //Problem: wird nicht gezeichnet
+
+
     public int x1 = 100;
     public int y1 = 500;
     public int x2 = 1000;
@@ -20,11 +23,11 @@ public class Character extends JPanel {     //zeichnet den Character
 
 
         Character.setColor(Color.RED);
-        Character.drawRect(x_Position,y_Position,breite,hoehe);
         Character.fillRect(x_Position,y_Position,breite,hoehe);
         setVisible(true);
 
 
     }
+
 
 }
