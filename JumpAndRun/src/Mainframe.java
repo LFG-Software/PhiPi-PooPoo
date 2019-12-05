@@ -3,25 +3,41 @@ import java.awt.*;
 
 public class Mainframe extends JFrame {     //macht den Frame und fügt dem Frame alle Komponenten des Spiels zu
 
+    public Screen screen;
+    public Player player;
+    public JLayeredPane jLayeredPane;
 
 
 
 
-
-        public Mainframe(int width,int height) {
+    public Mainframe(int width, int height) {
             super("JumpAndRun");
 
 
-            setSize(new Dimension(width, height));
+
+
+
+            setSize(width, height);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             setLocationRelativeTo(null);
             setResizable(false);
 
-            Screen screen = new Screen();           //zeigt nix von beiden
-            add(screen);
+            jLayeredPane = new JLayeredPane();
+            add(jLayeredPane);
 
-            Character character = new Character();
-            add(character);
+
+            screen = new Screen();
+            jLayeredPane.add(screen, new Integer(0));
+            
+
+            player = new Player();
+            jLayeredPane.add(player, new Integer(100));
+
+
+
+
+
+
 
 
 
@@ -29,10 +45,10 @@ public class Mainframe extends JFrame {     //macht den Frame und fügt dem Fram
             setFocusable(true);  //für Keylisteners
 
 
-
-
-
         }
+
+
+
 
 
 }

@@ -1,19 +1,28 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
-public class Game extends JFrame implements Runnable  {     //initialisiert das Spiel + ersetzt Klasse Mainboard
+public class Game extends JFrame   {     //initialisiert das Spiel + ersetzt Klasse Mainboard
 
-    public int WIDTH = 640;
-    public int HEIGHT = 320;
+    public final int WIDTH = 640;
+    public final int HEIGHT = 320;
     private boolean running = false;
+
+    public static Game game;
+    public Mainframe mainframe;
+    public Screen screen;
+    public Player player;
+    public Random random;
+
+    public Rectangle object;
+
 
 
     public Game() {
-        new Mainframe(WIDTH,HEIGHT);
+        mainframe = new Mainframe(WIDTH,HEIGHT);
 
 
-
-        //run();
+        run();
     }
 
     public void start() {
@@ -82,8 +91,11 @@ public class Game extends JFrame implements Runnable  {     //initialisiert das 
 
 
 
-    public static void main(String[] args) {        //zeigt nur frame ohne iwas darauf
-                new Game();
+
+
+    public static void main(String[] args) {
+
+               game = new Game();
 
 
             }
