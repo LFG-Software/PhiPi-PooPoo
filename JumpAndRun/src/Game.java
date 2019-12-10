@@ -1,11 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Random;
 
-public class Game extends JFrame   {     //initialisiert das Spiel + ersetzt Klasse Mainboard
+public class Game extends JFrame {     //initialisiert das Spiel + ersetzt Klasse Mainboard
 
-    public final int WIDTH = 640;
-    public final int HEIGHT = 320;
+    public final int WIDTH = 1280;
+    public final int HEIGHT = 940;
     private boolean running = false;
 
     public static Game game;
@@ -21,8 +23,14 @@ public class Game extends JFrame   {     //initialisiert das Spiel + ersetzt Kla
     public Game() {
         mainframe = new Mainframe(WIDTH,HEIGHT);
 
+        player = new Player();
+        mainframe.add(player);
 
-        run();
+
+
+
+
+        //run();
     }
 
     public void start() {
@@ -87,6 +95,25 @@ public class Game extends JFrame   {     //initialisiert das Spiel + ersetzt Kla
     private void render() {
 
     }
+
+
+    public void paint(Graphics player) {
+        player.setColor(Color.CYAN);
+        player.fillRect(100,120,30,30);
+    }
+
+
+
+    public void keylistenerTest(KeyEvent keyEvent) {
+        int test = 0;
+        System.out.println(test);
+        if(keyEvent.getKeyCode() == KeyEvent.VK_W) {
+            test = 1;
+            System.out.println(test);
+        }
+
+    }
+
 
 
 

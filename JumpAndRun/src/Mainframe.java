@@ -23,15 +23,17 @@ public class Mainframe extends JFrame {     //macht den Frame und fügt dem Fram
             setResizable(false);
 
             jLayeredPane = new JLayeredPane();
-            add(jLayeredPane);
+            JPanel master = new JPanel(new CardLayout());
+
+
 
 
             screen = new Screen();
-            jLayeredPane.add(screen, new Integer(0));
-            
+            add(screen);
+
 
             player = new Player();
-            jLayeredPane.add(player, new Integer(100));
+            //add(player);
 
 
 
