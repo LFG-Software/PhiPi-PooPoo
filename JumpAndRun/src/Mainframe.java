@@ -5,6 +5,7 @@ public class Mainframe extends JFrame {     //macht den Frame und fügt dem Fram
 
     public Screen screen;
     public Player player;
+    public Game game;
     public JLayeredPane jLayeredPane;
 
 
@@ -32,10 +33,8 @@ public class Mainframe extends JFrame {     //macht den Frame und fügt dem Fram
             add(screen);
 
 
-            player = new Player();
+            //player = new Player();
             //add(player);
-
-
 
 
 

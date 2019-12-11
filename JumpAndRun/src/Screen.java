@@ -5,7 +5,10 @@ import java.util.Random;
 public class Screen extends JPanel {       //zeichnet den Screen = Map
 
 
-    int x = 0, y = 0, velX = 5, velY = 5;
+    int x = 0, y = 0, velX = 10, velY = 10;
+    int xZwei = 1080, yZwei = 0, velXZwei = 10, velYZwei = 10;
+    int xDrei = 0, yDrei = 740, velXDrei = 10, velYDrei = 10;
+    int xVier = 1080, yVier = 740, velXVier = 10, velYVier = 10;
 
     int x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,x8,y8,x9,y9,x10,y10,x11,y11;
 
@@ -19,7 +22,7 @@ public class Screen extends JPanel {       //zeichnet den Screen = Map
     public void paintComponent(Graphics g) {
 
 
-        g.setColor(Color.MAGENTA);
+        //g.setColor(Color.MAGENTA);
         g.fillRect(0,0,10000,10000);
 
         g.setColor(Color.YELLOW);
@@ -88,17 +91,17 @@ public class Screen extends JPanel {       //zeichnet den Screen = Map
 
 
 
-        repaint();
 
 
-        g.setColor(Color.CYAN);
-        g.fillRect(x,y,100,100);
+
+        g.setColor(Color.BLUE);
+        g.fillRect(x,y,200,200);
 
 
-        if (x < 0 || x > 1180) {     //just4fun
+        if (x < 0 || x > 1080) {     //just4fun
             velX = -velX ; }
 
-        if (y < 0 || y > 840) {
+        if (y < 0 || y > 740) {
             velY = -velY ; }
 
 
@@ -108,7 +111,61 @@ public class Screen extends JPanel {       //zeichnet den Screen = Map
 
 
 
+        g.setColor(Color.BLUE);
+        g.fillRect(xZwei,yZwei,200,200);
 
+
+        if (xZwei < 0 || xZwei > 1080) {     //just4fun
+            velXZwei = -velXZwei ; }
+
+        if (y < 0 || y > 740) {
+            velYZwei = -velYZwei ; }
+
+
+        xZwei += velXZwei;
+        yZwei += velYZwei;
+
+
+
+
+
+        g.setColor(Color.BLUE);
+        g.fillRect(xDrei,yDrei,200,200);
+
+
+        if (xDrei < 0 || xDrei > 1080) {     //just4fun
+            velXDrei = -velXDrei ; }
+
+        if (yDrei < 0 || yDrei > 740) {
+            velYDrei = -velYDrei ; }
+
+
+        xDrei += velXDrei;
+        yDrei += velYDrei;
+
+
+
+
+        g.setColor(Color.BLUE);
+        g.fillRect(xVier,yVier,200,200);
+
+
+        if (xVier < 0 || xVier > 1080) {     //just4fun
+            velXVier = -velXVier ; }
+
+        if (yVier < 0 || yVier > 740) {
+            velYVier = -velYVier ; }
+
+
+        xVier += velXVier;
+        yVier += velYVier;
+
+
+
+
+
+        g.setColor(Color.MAGENTA);
+        g.fillRect(100,100,100,100);
 
         repaint();
 

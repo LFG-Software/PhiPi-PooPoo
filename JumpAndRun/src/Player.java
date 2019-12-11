@@ -9,7 +9,28 @@ public class Player extends JPanel  {     //zeichnet den Player
     int x = 0, y = 0, velX = 1, velY = 1;
 
 
+    public Player(int xPosition, int yPosition, int playerWidth, int playerHeight) {
+
+        int x = xPosition;
+        int y = yPosition;
+        int width = playerWidth;
+        int height = playerHeight;
+
+
+        Rectangle player = new Rectangle(x,y,width,height);
+
+        repaint(player);
+
+        setVisible(true);
+
+
+
+    }
+
+
     public void paintComponent(Graphics g) {
+
+        g.fillRect(0,0,10000,10000);
 
         g.setColor(Color.CYAN);
         g.fillRect(x,y,50,50);

@@ -1,34 +1,49 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
-public class Game extends JFrame {     //initialisiert das Spiel + ersetzt Klasse Mainboard
+public class Game extends JFrame implements ActionListener {     //initialisiert das Spiel + ersetzt Klasse Mainboard
 
     public final int WIDTH = 1280;
     public final int HEIGHT = 940;
     private boolean running = false;
+    public int x = 2, y = 3,width = 20, height = 20;
+
+
 
     public static Game game;
     public Mainframe mainframe;
     public Screen screen;
-    public Player player;
     public Random random;
-
     public Rectangle object;
+    public Renderer renderer;
+    public Player player;
+
+
 
 
 
     public Game() {
         mainframe = new Mainframe(WIDTH,HEIGHT);
 
-        player = new Player();
+
+
+        player = new Player(x,y,width,height);
         mainframe.add(player);
 
 
+        object = new Rectangle(WIDTH/2, HEIGHT/2,100,100);
 
 
+
+
+        setSize(WIDTH,HEIGHT);
+        setVisible(true);
+        mainframe.setVisible(true);
 
         //run();
     }
@@ -97,14 +112,41 @@ public class Game extends JFrame {     //initialisiert das Spiel + ersetzt Klass
     }
 
 
-    public void paint(Graphics player) {
-        player.setColor(Color.CYAN);
-        player.fillRect(100,120,30,30);
+
+
+
+    public void paint(Graphics g) {
+
+        g.setColor(Color.CYAN);
+        g.fillRect(0,0,WIDTH,HEIGHT);
+
+
+        g.setColor(Color.BLACK);
+        g.fillRect(object.x,object.y,object.width,object.height);
+
+        int velX = 3;
+        int velY = 3;
+
+        if (object.x < 0 || object.x > WIDTH) {     //just4fun
+            velX = -velX; }
+
+        if (object.y < 0 || object.y > HEIGHT) {
+            velY = -velY; }
+
+
+        object.x += velX;
+        object.y += velY;
+
+
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+
     }
 
 
-
-    public void keylistenerTest(KeyEvent keyEvent) {
+    public void keyListener(KeyEvent keyEvent) {
         int test = 0;
         System.out.println(test);
         if(keyEvent.getKeyCode() == KeyEvent.VK_W) {
@@ -115,6 +157,24 @@ public class Game extends JFrame {     //initialisiert das Spiel + ersetzt Klass
     }
 
 
+    public void paintComponent(Graphics g) {
+
+        int velX = 3;
+        int velY = 3;
+
+        if (object.x < 0 || object.x > WIDTH) {     //just4fun
+            velX = -velX; }
+
+        if (object.y < 0 || object.y > HEIGHT) {
+            velY = -velY; }
+
+
+        object.x += velX;
+        object.y += velY;
+        repaint();
+
+    }
+
 
 
 
@@ -122,7 +182,7 @@ public class Game extends JFrame {     //initialisiert das Spiel + ersetzt Klass
 
     public static void main(String[] args) {
 
-               game = new Game();
+              game = new Game();
 
 
             }
