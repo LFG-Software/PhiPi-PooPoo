@@ -5,10 +5,10 @@ import java.util.Random;
 public class Screen extends JPanel {       //zeichnet den Screen = Map
 
 
-    int x = 0, y = 0, velX = 10, velY = 10;
-    int xZwei = 1080, yZwei = 0, velXZwei = 10, velYZwei = 10;
-    int xDrei = 0, yDrei = 740, velXDrei = 10, velYDrei = 10;
-    int xVier = 1080, yVier = 740, velXVier = 10, velYVier = 10;
+    int x = 0, y = 0, velX = 2, velY = velX;
+    int xZwei = 1080, yZwei = 0, velXZwei = velX, velYZwei = velXZwei;
+    int xDrei = 0, yDrei = 740, velXDrei = velX, velYDrei = velXDrei;
+    int xVier = 1080, yVier = 740, velXVier = velX, velYVier = velXVier;
 
     int x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,x8,y8,x9,y9,x10,y10,x11,y11;
 
@@ -21,11 +21,13 @@ public class Screen extends JPanel {       //zeichnet den Screen = Map
 
     public void paintComponent(Graphics g) {
 
+        setBackground(Color.GRAY);
+
 
         //g.setColor(Color.MAGENTA);
-        g.fillRect(0,0,10000,10000);
+        //g.fillRect(0,0,10000,10000);
 
-        g.setColor(Color.YELLOW);
+        /*g.setColor(Color.YELLOW);
         g.drawLine(x1,y1,x2,y2);
 
         g.setColor(Color.GREEN);
@@ -38,7 +40,7 @@ public class Screen extends JPanel {       //zeichnet den Screen = Map
         g.fillArc(x7,y7,x8,y8,x9,x9);
 
         g.setColor(Color.ORANGE);
-        g.fillRect(x10,y10,x11,y11);
+        g.fillRect(x10,y10,x11,y11);*/
 
         random = new Random();      //just4fun
         int randomNumX = random.nextInt(max);

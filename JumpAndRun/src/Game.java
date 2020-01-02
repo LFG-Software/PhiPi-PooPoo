@@ -6,12 +6,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
-public class Game extends JFrame implements ActionListener {     //initialisiert das Spiel + ersetzt Klasse Mainboard
+public class Game extends JPanel implements ActionListener {     //initialisiert das Spiel + ersetzt Klasse Mainboard
 
     public final int WIDTH = 1280;
     public final int HEIGHT = 940;
     private boolean running = false;
     public int x = 2, y = 3,width = 20, height = 20;
+    public int velX = 500;
+    public int velY = 500;
 
 
 
@@ -22,6 +24,7 @@ public class Game extends JFrame implements ActionListener {     //initialisiert
     public Rectangle object;
     public Renderer renderer;
     public Player player;
+    public Game player1;
 
 
 
@@ -32,20 +35,17 @@ public class Game extends JFrame implements ActionListener {     //initialisiert
 
 
 
-        player = new Player(x,y,width,height);
+        player = new Player();
         mainframe.add(player);
 
-
-        object = new Rectangle(WIDTH/2, HEIGHT/2,100,100);
-
+        movePlayer();
 
 
+        //object = new Rectangle(WIDTH/2, HEIGHT/2,100,100);
+        //run();
 
-        setSize(WIDTH,HEIGHT);
-        setVisible(true);
         mainframe.setVisible(true);
 
-        //run();
     }
 
     public void start() {
@@ -115,32 +115,44 @@ public class Game extends JFrame implements ActionListener {     //initialisiert
 
 
 
-    public void paint(Graphics g) {
+
+
+    public void paintComponent(Graphics g) {
 
         g.setColor(Color.CYAN);
         g.fillRect(0,0,WIDTH,HEIGHT);
 
 
         g.setColor(Color.BLACK);
-        g.fillRect(object.x,object.y,object.width,object.height);
+        g.fillRect(x,y,width,height);
 
-        int velX = 3;
-        int velY = 3;
-
-        if (object.x < 0 || object.x > WIDTH) {     //just4fun
-            velX = -velX; }
-
-        if (object.y < 0 || object.y > HEIGHT) {
-            velY = -velY; }
-
-
-        object.x += velX;
-        object.y += velY;
 
 
     }
 
     public void actionPerformed(ActionEvent e) {
+
+        player.x = 200;
+        player.y = 200;
+
+
+
+
+
+        if (player.x < 0 || player.x > WIDTH) {
+            velX = -velX;
+        }
+
+        if (player.y < 0 || player.y > HEIGHT) {
+            velY = -velY;
+        }
+
+
+        player.x += 2;
+        player.y += 2;
+
+
+
 
 
     }
@@ -156,24 +168,27 @@ public class Game extends JFrame implements ActionListener {     //initialisiert
 
     }
 
-
-    public void paintComponent(Graphics g) {
-
-        int velX = 3;
-        int velY = 3;
-
-        if (object.x < 0 || object.x > WIDTH) {     //just4fun
-            velX = -velX; }
-
-        if (object.y < 0 || object.y > HEIGHT) {
-            velY = -velY; }
+    public void movePlayer() {
 
 
-        object.x += velX;
-        object.y += velY;
-        repaint();
+        if (player.x < 0 || player.x > WIDTH) {
+            velX = -velX;
+        }
+
+        if (player.y < 0 || player.y > HEIGHT) {
+            velY = -velY;
+        }
+
+
+
+        player.x += velX;
+        player.y += velY;
+
+
 
     }
+
+
 
 
 
